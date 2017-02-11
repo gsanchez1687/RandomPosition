@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Cambiar de posicion aleatoriamente una imagen</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <script src="js/libs/jquery-cookie/jquery.cookie.js"></script>
+        <script src="js/libs/jquery/jquery.js"></script>
+        
+        <style>          
+            .trasparencia{ opacity: 0.5; }
+        </style>
+        <script language="javascript">
+
+            $(document).ready(function () {
+                /*Esto quiere decir que el top lo quiero fijo y lo que quiero es un randon del left*/
+                numeroAleatorio(1,0,1,1024,'20%','img/git.png');
+            });
+            
+            function numeroAleatorio(mintop,maxtop,minleft,maxleft,width,ruta) {
+                var top = Math.round(Math.random() * (maxtop - mintop) + mintop);
+                var left = Math.round(Math.random() * (maxleft - minleft) + minleft);  
+                /*aqu si tengo unos textos por ejemplos unos link, le aplico trasparencia a la imagen*/
+                if(left == 1 || left <= 200 ){
+                     $('#imagen').html("<img class='trasparencia' width='20%' src="+ruta+" style='position: relative; left:"+left+"px; top:"+top+"px '>  ");
+                }else{
+                    $('#imagen').html("<img width="+width+" src="+ruta+" style='position: relative; left:"+left+"px; top:"+top+"px'>");
+                   
+                }
+                
+            }
+        </script>
+
+    </head>
+    <body>    
+            <div id="imagen"></div>
+    </body>
+</html>
